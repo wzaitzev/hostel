@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>   
+    <meta charset="UTF-8" />
+    <title>Add_Del_List_Code</title>
+	
+  
+  <script type="text/javascript">
+        
+        function setNewAction() {
+            
+            var DID = document.getElementById("DevID").value;
+            var UserID = document.getElementById("AID").value;
+            var CodeIn = document.getElementById("ACode").value;
+            var Stat = document.getElementById("astatus").value;
+            var ActStr = "https://find.z-wave.me/JS/Run/zway.devices[" + DID + "].UserCode.Set(" + UserID + "," + CodeIn + "," + Stat + ")";
+            document.forms.AddCode.action = ActStr;
+            return;
+        }
+        function DelNewAction() {
+            var DID = document.getElementById("DevID").value;
+            var UserID = document.getElementById("DelID").value;
+            var CodeIn = document.getElementById("DCode").value;
+            var Stat = document.getElementById("Dstatus").value;
+            var ActStr = "https://find.z-wave.me/JS/Run/zway.devices[" + DID + "].UserCode.Set(" + UserID + "," + CodeIn + "," + Stat + ")";
+            document.forms["DelCode"].action = ActStr;
+            return;
+        }
+        
+        function ConfirmNewAction() {
+                    var DID = document.getElementById("DevID").value;
+                    var ActStr = "https://find.z-wave.me/JS/Run/zway.devices[" + DID + "].UserCode.Get(0)";
+                    document.forms["ConfirmChangeCode"].action = ActStr;
+                    return;
+        }
+        function ListNewAction() {
+            var DIL= document.getElementById("DevID").value;
+            
+            var UserID = document.getElementById("LID").value;
+            var ActStr = "https://find.z-wave.me/JS/Run/zway.devices[" + DIL + "].UserCode.data[" + UserID + "].code.value";
+            document.forms.ListCode.action = ActStr;
+            return;
+        }
+    </script>
+    </head>
+    <body>
+    <nav>
+        <a href="./index.html">Home</a>
+    </nav>
+    <h1>Manage the Lock</h1>
+    <form method="post" name="DeviceN" id="DeviceN" onsubmit="setDeviceN()" action="">
+            <div>
+                <strong>Number</strong> <input type="number" min="1" max="9" id="DevID" name="DevID" />
+            </div>
+    </form>
+        <h2>Add new code to the Lock </h2>
+    <form method="post" name="AddCode" id="AddCode" onsubmit="setNewAction()" action="">
+        <div
+            
+            <strong>ID</strong> <input type="number" min="1" max="18" id="AID" name="AID" /> 
+            <strong>Code</strong> <input type="text" pattern="[0-9]{4}" placeholder="4 digits" id="ACode" Name="ACode" />
+        </div>
+        <div>
+            <input type="hidden" id="astatus" name="astatus" value="1" />
+        </div>
+        <input type="submit" class="button" value="Send" />
+    </form>
+    <h2>Delete code from Lock</h2>
+    <form method="post" Name="DelCode" id="DelCode" onsubmit=" DelNewAction()" action="">
+        <div>
+            
+            <strong>ID</strong> <input type="number" min="1" max="18" id="DelID" name="DelID" />
+        </div>
+        <div>
+            <input type="hidden" id="DCode" name="DCode" value="0000" />
+        </div>
+        <div>
+            <input type="hidden" id="Dstatus" name="Dstatus" value="0" />
+        </div>
+        <input type="submit" value="Send" />
+    </form>
+    <h2>Confirm changes in the Lock</h2>
+    <form method="post" Name="ConfirmChangeCode" id="ConfirmChangeCode" onsubmit= "ConfirmNewAction()" action="">
+        
+        <input type="submit" value="OK" />
+     </form>
+    <h2>Code list from Lock</h2>
+    <form method="post" Name="ListCode" id="ListCode" onsubmit="ListNewAction()" action="">
+        <div>
+            
+            <strong>ID</strong> <input type="text" id="LID" name="LID" />
+        </div>
+        <input type="submit" value="Send" />
+        <div id="listArea"></div>
+    </form>
+    </body>
+    </html>
+    
