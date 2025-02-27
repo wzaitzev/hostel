@@ -1,7 +1,6 @@
 # hostel
-Z-Wave for access to the Philio locks in a mini-hotel 
-			 Описание системы бронирования мини отеля и управления замками комнат, вход в здание и комнаты по кодовым замкам. Система не опробована в реальных условиях.
-
+Z-Wave for access to the Philio locks in a mini-hotel
+ Описание системы бронирования мини отеля и управления замками комнат, вход в здание и комнаты по кодовым замкам. Система не опробована в реальных условиях.
 Операционная среда:
 Server Windows 16/Ubuntu 20, Apache 2.4, PHP 7, MySql 5.6, Curl, Forms HTML 5, JS, Z-Wave hub, замок Philio.
 
